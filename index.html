@@ -1,0 +1,4442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>ASCEND — развитие внешности</title>
+
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="Бесплатная система развития внешности, лица, питания и тренировок.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --bg:#09090b;
+    --card:#111114;
+    --card2:#151519;
+    --border:rgba(255,255,255,.08);
+    --text:#f4f4f5;
+    --muted:#898991;
+
+    --yellow:#f7d45b;
+    --yellow2:#ffe88a;
+
+    --green:#68e7b1;
+    --purple:#9d8cff;
+    --blue:#78a9ff;
+    --red:#ff6868;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(247,212,91,.09),
+            transparent 34%
+        ),
+        #09090b;
+
+    color:var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        Inter,
+        Arial,
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+::-webkit-scrollbar{
+    width:5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#29292f;
+    border-radius:20px;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    width:100%;
+    max-width:760px;
+    margin:0 auto;
+    min-height:100vh;
+    padding-bottom:110px;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar{
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    position:sticky;
+    top:0;
+    z-index:50;
+
+    background:rgba(9,9,11,.82);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.brand-logo{
+    width:39px;
+    height:39px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f9dc68,
+            #c5a73d
+        );
+
+    color:#111;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 28px rgba(247,212,91,.18);
+}
+
+.brand-logo svg{
+    width:22px;
+    height:22px;
+}
+
+.brand-name{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:-.7px;
+}
+
+.brand-subtitle{
+    margin-top:2px;
+
+    font-size:9px;
+    color:var(--muted);
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.menu-btn{
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.menu-btn svg{
+    width:21px;
+    height:21px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    padding:18px 16px 0;
+}
+
+.section{
+    display:none;
+
+    animation:
+        sectionIn .35s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes sectionIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+
+    min-height:275px;
+
+    padding:29px 24px;
+
+    border-radius:29px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 82% 8%,
+            rgba(247,212,91,.17),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #17171b,
+            #0e0e10
+        );
+
+    border:1px solid var(--border);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    right:-110px;
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:rgba(247,212,91,.13);
+
+    filter:blur(45px);
+}
+
+.hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--green);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:23px;
+}
+
+.hero-tag span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+
+    max-width:450px;
+
+    font-size:38px;
+    line-height:1.02;
+
+    letter-spacing:-1.8px;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+
+    max-width:430px;
+
+    margin-top:16px;
+
+    color:var(--muted);
+
+    font-size:14px;
+    line-height:1.65;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card{
+    margin-top:14px;
+
+    padding:21px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151519,
+            #101012
+        );
+
+    border:1px solid var(--border);
+}
+
+.card-title{
+    font-size:20px;
+    font-weight:800;
+}
+
+.card-subtitle{
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:13px;
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   STREAK
+===================================================== */
+
+.streak-card{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(247,212,91,.17),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #17171a,
+            #111113
+        );
+}
+
+.streak-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+
+.streak-label{
+    color:var(--yellow);
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.streak-number{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:6px;
+}
+
+.streak-number strong{
+    font-size:47px;
+    line-height:1;
+
+    letter-spacing:-2.5px;
+}
+
+.fire{
+    font-size:29px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,180,40,.35)
+        );
+}
+
+.streak-status{
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.level-badge{
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:rgba(247,212,91,.08);
+
+    border:1px solid rgba(247,212,91,.12);
+
+    color:var(--yellow);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.7px;
+}
+
+.progress-line{
+    height:6px;
+
+    margin-top:20px;
+
+    background:#252529;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress-line-inner{
+    height:100%;
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--yellow),
+            var(--yellow2)
+        );
+
+    border-radius:20px;
+
+    transition:
+        width .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.progress-meta{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:7px;
+
+    color:#686870;
+
+    font-size:10px;
+}
+
+.week{
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:7px;
+
+    margin-top:20px;
+}
+
+.day{
+    text-align:center;
+}
+
+.day-name{
+    margin-bottom:7px;
+
+    color:#6d6d75;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+}
+
+.day-circle{
+    width:33px;
+    height:33px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.025);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#5d5d65;
+
+    font-size:11px;
+    font-weight:800;
+
+    transition:.25s;
+}
+
+.day.completed .day-circle{
+    background:var(--yellow);
+
+    border-color:var(--yellow);
+
+    color:#111;
+
+    box-shadow:
+        0 0 18px
+        rgba(247,212,91,.18);
+}
+
+.day.today .day-circle{
+    border-color:var(--yellow);
+    color:var(--yellow);
+}
+
+.complete-btn{
+    width:100%;
+    height:54px;
+
+    margin-top:19px;
+
+    border:0;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--yellow2),
+            var(--yellow)
+        );
+
+    color:#111;
+
+    font-size:14px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(247,212,91,.12);
+
+    transition:.2s;
+}
+
+.complete-btn:active{
+    transform:scale(.98);
+}
+
+.complete-btn.done{
+    background:
+        rgba(104,231,177,.10);
+
+    color:var(--green);
+
+    border:
+        1px solid
+        rgba(104,231,177,.23);
+
+    box-shadow:none;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:14px;
+}
+
+.stat-card{
+    padding:17px 14px;
+
+    border-radius:20px;
+
+    background:#121215;
+
+    border:1px solid var(--border);
+}
+
+.stat-icon{
+    width:34px;
+    height:34px;
+
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.04);
+
+    color:var(--yellow);
+}
+
+.stat-icon svg{
+    width:18px;
+    height:18px;
+}
+
+.stat-value{
+    margin-top:13px;
+
+    font-size:22px;
+    font-weight:900;
+
+    letter-spacing:-.7px;
+}
+
+.stat-label{
+    margin-top:3px;
+
+    color:#73737b;
+
+    font-size:10px;
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.quick-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:14px;
+}
+
+.quick-card{
+    min-height:140px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            #16161a,
+            #101012
+        );
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.quick-card:active{
+    transform:scale(.97);
+}
+
+.quick-icon{
+    width:43px;
+    height:43px;
+
+    margin-bottom:17px;
+
+    border-radius:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(247,212,91,.08);
+
+    color:var(--yellow);
+}
+
+.quick-icon svg{
+    width:21px;
+    height:21px;
+}
+
+.quick-card h3{
+    font-size:15px;
+}
+
+.quick-card p{
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.rating-card{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(157,140,255,.14),
+            transparent 31%
+        ),
+        linear-gradient(
+            145deg,
+            #15141c,
+            #101012
+        );
+
+    border-color:
+        rgba(157,140,255,.18);
+}
+
+.rating-icon{
+    width:49px;
+    height:49px;
+
+    margin-bottom:17px;
+
+    border-radius:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(157,140,255,.1);
+
+    color:var(--purple);
+}
+
+.rating-icon svg{
+    width:24px;
+    height:24px;
+}
+
+.rating-card h2{
+    font-size:22px;
+
+    letter-spacing:-.7px;
+}
+
+.rating-card p{
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:13px;
+    line-height:1.6;
+}
+
+.rating-btn{
+    width:100%;
+    height:52px;
+
+    margin-top:18px;
+
+    border:0;
+
+    border-radius:15px;
+
+    background:white;
+
+    color:#111;
+
+    font-size:14px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.rating-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================================
+   FREE
+===================================================== */
+
+.free-box{
+    margin-top:14px;
+
+    padding:26px 20px;
+
+    text-align:center;
+
+    border-radius:24px;
+
+    background:
+        rgba(104,231,177,.035);
+
+    border:
+        1px solid
+        rgba(104,231,177,.15);
+}
+
+.free-box svg{
+    width:28px;
+    height:28px;
+
+    color:var(--green);
+}
+
+.free-box h3{
+    margin-top:11px;
+
+    font-size:17px;
+}
+
+.free-box p{
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header{
+    padding:10px 4px 18px;
+}
+
+.page-header .eyebrow{
+    color:var(--yellow);
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.page-header h1{
+    margin-top:8px;
+
+    font-size:34px;
+    line-height:1.03;
+
+    letter-spacing:-1.4px;
+}
+
+.page-header p{
+    margin-top:9px;
+
+    color:var(--muted);
+
+    font-size:13px;
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   CONTENT ITEMS
+===================================================== */
+
+.content-item{
+    padding:18px;
+
+    margin-bottom:11px;
+
+    border-radius:20px;
+
+    background:#121215;
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+}
+
+.content-item:hover{
+    border-color:
+        rgba(255,255,255,.13);
+}
+
+.content-item-head{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.content-item-icon{
+    width:43px;
+    height:43px;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:var(--yellow);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.content-item-icon svg{
+    width:21px;
+    height:21px;
+}
+
+.content-item h3{
+    font-size:15px;
+}
+
+.content-item p{
+    margin-top:12px;
+
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.65;
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievements{
+    margin-top:14px;
+}
+
+.achievements-title{
+    margin:0 4px 11px;
+
+    font-size:18px;
+    font-weight:900;
+
+    letter-spacing:-.5px;
+}
+
+.achievement{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding:15px;
+
+    margin-bottom:9px;
+
+    border-radius:18px;
+
+    background:#121215;
+
+    border:1px solid var(--border);
+
+    opacity:.42;
+
+    transition:.3s;
+}
+
+.achievement.unlocked{
+    opacity:1;
+
+    border-color:
+        rgba(247,212,91,.16);
+
+    background:
+        linear-gradient(
+            145deg,
+            #171619,
+            #111113
+        );
+}
+
+.achievement-icon{
+    width:44px;
+    height:44px;
+
+    flex-shrink:0;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#1b1b1f;
+
+    font-size:20px;
+
+    filter:grayscale(1);
+}
+
+.achievement.unlocked .achievement-icon{
+    filter:none;
+
+    background:
+        rgba(247,212,91,.09);
+}
+
+.achievement h4{
+    font-size:13px;
+}
+
+.achievement p{
+    margin-top:4px;
+
+    color:#73737b;
+
+    font-size:10px;
+}
+
+.achievement-check{
+    margin-left:auto;
+
+    color:var(--green);
+
+    opacity:0;
+}
+
+.achievement.unlocked .achievement-check{
+    opacity:1;
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+.calendar-card{
+    margin-top:14px;
+
+    padding:20px;
+
+    border-radius:23px;
+
+    background:#121215;
+
+    border:1px solid var(--border);
+}
+
+.calendar-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.calendar-title{
+    font-size:17px;
+    font-weight:900;
+}
+
+.calendar-count{
+    color:var(--yellow);
+
+    font-size:11px;
+    font-weight:800;
+}
+
+.calendar{
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:6px;
+
+    margin-top:17px;
+}
+
+.calendar-weekday{
+    text-align:center;
+
+    color:#65656c;
+
+    font-size:8px;
+
+    padding-bottom:3px;
+}
+
+.calendar-day{
+    aspect-ratio:1;
+
+    border-radius:9px;
+
+    background:#19191d;
+
+    border:1px solid rgba(255,255,255,.035);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#6e6e76;
+
+    font-size:9px;
+
+    transition:.2s;
+}
+
+.calendar-day.completed{
+    background:
+        rgba(247,212,91,.9);
+
+    color:#111;
+
+    border-color:
+        rgba(247,212,91,.95);
+
+    font-weight:900;
+}
+
+.calendar-day.today{
+    border-color:var(--yellow);
+}
+
+.calendar-day.empty{
+    opacity:0;
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+    position:fixed;
+
+    z-index:100;
+
+    left:50%;
+    bottom:13px;
+
+    transform:translateX(-50%);
+
+    width:min(490px,calc(100% - 24px));
+
+    height:69px;
+
+    border-radius:23px;
+
+    background:
+        rgba(19,19,22,.92);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    padding:5px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.45);
+}
+
+.nav-btn{
+    border:0;
+
+    background:transparent;
+
+    color:#65656d;
+
+    border-radius:18px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:4px;
+
+    cursor:pointer;
+
+    font-size:9px;
+    font-weight:700;
+}
+
+.nav-btn svg{
+    width:21px;
+    height:21px;
+}
+
+.nav-btn.active{
+    color:var(--yellow);
+
+    background:
+        rgba(247,212,91,.08);
+}
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    z-index:200;
+
+    background:rgba(0,0,0,.62);
+
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+}
+
+.overlay.open{
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+.side-menu{
+    position:fixed;
+
+    z-index:210;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:min(330px,86%);
+
+    padding:22px 16px;
+
+    background:#101012;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.08);
+
+    transform:translateX(-100%);
+
+    transition:
+        .3s cubic-bezier(.2,.8,.2,1);
+}
+
+.side-menu.open{
+    transform:translateX(0);
+}
+
+.side-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:34px;
+}
+
+.side-title{
+    font-size:21px;
+    font-weight:900;
+}
+
+.close-menu{
+    width:40px;
+    height:40px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.menu-section-title{
+    margin:23px 10px 8px;
+
+    color:#66666e;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.side-item{
+    width:100%;
+    min-height:54px;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    padding:0 13px;
+
+    border:0;
+
+    border-radius:15px;
+
+    background:transparent;
+
+    color:#d7d7dc;
+
+    font-size:14px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    text-align:left;
+}
+
+.side-item:hover{
+    background:
+        rgba(255,255,255,.04);
+}
+
+.side-item svg{
+    width:21px;
+    height:21px;
+
+    color:#898991;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+
+    z-index:500;
+
+    left:50%;
+    bottom:96px;
+
+    transform:
+        translate(-50%,18px);
+
+    opacity:0;
+
+    padding:13px 18px;
+
+    border-radius:15px;
+
+    background:
+        rgba(35,35,39,.96);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    color:white;
+
+    font-size:13px;
+    font-weight:800;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.4);
+
+    transition:.25s;
+
+    white-space:nowrap;
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+.confetti{
+    position:fixed;
+
+    z-index:600;
+
+    width:7px;
+    height:12px;
+
+    top:45%;
+
+    pointer-events:none;
+
+    animation:
+        confettiFall
+        900ms
+        ease-out
+        forwards;
+}
+
+@keyframes confettiFall{
+
+    from{
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(
+                var(--r)
+            );
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(min-width:700px){
+
+    main{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .quick-grid{
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+    .quick-card{
+        min-height:145px;
+    }
+
+}
+
+@media(max-width:380px){
+
+    .hero h1{
+        font-size:33px;
+    }
+
+    .nav-btn{
+        font-size:8px;
+    }
+
+    .nav-btn svg{
+        width:19px;
+        height:19px;
+    }
+
+    .streak-number strong{
+        font-size:42px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M12 3v18"/>
+                <path d="M5 8h14"/>
+                <path d="M7 8c0 4 2 6 5 6s5-2 5-6"/>
+                <path d="M8 18c1.5-1 2.8-1.5 4-1.5s2.5.5 4 1.5"/>
+            </svg>
+
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                ASCEND
+            </div>
+
+            <div class="brand-subtitle">
+                внешность · развитие
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="menu-btn"
+        onclick="openMenu()"
+        aria-label="Меню"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+        >
+            <path d="M4 6h16"/>
+            <path d="M4 12h16"/>
+            <path d="M4 18h16"/>
+        </svg>
+
+    </button>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section
+    class="section active"
+    id="home"
+>
+
+
+    <div class="hero">
+
+        <div class="hero-tag">
+
+            <span></span>
+
+            твой путь к лучшей версии
+
+        </div>
+
+
+        <h1>
+
+            Работай над собой.<br>
+            Каждый день.
+
+        </h1>
+
+
+        <p>
+
+            Советы по внешности, упражнениям,
+            питанию и тренировкам — в одном месте.
+
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         STREAK
+    ========================== -->
+
+    <div class="card streak-card">
+
+
+        <div class="streak-header">
+
+            <div>
+
+                <div class="streak-label">
+                    Твоя серия
+                </div>
+
+
+                <div class="streak-number">
+
+                    <strong id="streakNumber">
+                        0
+                    </strong>
+
+                    <span class="fire">
+                        🔥
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="streak-status"
+                    id="streakStatus"
+                >
+                    Начни сегодня
+                </div>
+
+            </div>
+
+
+            <div
+                class="level-badge"
+                id="levelBadge"
+            >
+                УРОВЕНЬ 1
+            </div>
+
+        </div>
+
+
+        <div class="progress-line">
+
+            <div
+                class="progress-line-inner"
+                id="levelProgress"
+            ></div>
+
+        </div>
+
+
+        <div class="progress-meta">
+
+            <span id="levelCurrent">
+                0 / 7 дней
+            </span>
+
+            <span id="levelNext">
+                До уровня 2
+            </span>
+
+        </div>
+
+
+        <div
+            class="week"
+            id="week"
+        ></div>
+
+
+        <button
+            class="complete-btn"
+            id="completeBtn"
+            onclick="completeDay()"
+        >
+            Я выполнил всё за сегодня
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         STATS
+    ========================== -->
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M12 3v18"/>
+                    <path d="M5 8h14"/>
+                    <path d="M7 8c0 4 2 6 5 6s5-2 5-6"/>
+                </svg>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalDays"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                выполнено дней
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+                </svg>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="achievementCount"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                достижений
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M4 18l6-6 4 4 6-8"/>
+                    <path d="M17 8h3v3"/>
+                </svg>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="bestStreak"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                лучший результат
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUICK
+    ========================== -->
+
+    <div class="quick-grid">
+
+
+        <div
+            class="quick-card"
+            onclick="showSection('face')"
+        >
+
+            <div class="quick-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <circle cx="12" cy="12" r="8"/>
+                    <circle cx="9" cy="10" r="1"/>
+                    <circle cx="15" cy="10" r="1"/>
+                    <path d="M8.5 14c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Лицо
+            </h3>
+
+            <p>
+                Упражнения и советы
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="showSection('nutrition')"
+        >
+
+            <div class="quick-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M7 3v8"/>
+                    <path d="M4 3v5a3 3 0 0 0 6 0V3"/>
+                    <path d="M7 11v10"/>
+                    <path d="M15 3v18"/>
+                    <path d="M15 3c3 1 4 3 4 6v3h-4"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Питание
+            </h3>
+
+            <p>
+                Рацион и рекомендации
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="showSection('training')"
+        >
+
+            <div class="quick-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M6 8v8"/>
+                    <path d="M3 10v4"/>
+                    <path d="M18 8v8"/>
+                    <path d="M21 10v4"/>
+                    <path d="M6 12h12"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Тренировки
+            </h3>
+
+            <p>
+                Программы и упражнения
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="showSection('rating')"
+        >
+
+            <div class="quick-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Оценка
+            </h3>
+
+            <p>
+                Узнай мнение других
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CALENDAR
+    ========================== -->
+
+    <div class="calendar-card">
+
+        <div class="calendar-head">
+
+            <div class="calendar-title">
+                Твой прогресс
+            </div>
+
+            <div
+                class="calendar-count"
+                id="calendarCount"
+            >
+                0 дней
+            </div>
+
+        </div>
+
+
+        <div
+            class="calendar"
+            id="calendar"
+        ></div>
+
+    </div>
+
+
+    <!-- =========================
+         ACHIEVEMENTS
+    ========================== -->
+
+    <div class="achievements">
+
+        <div class="achievements-title">
+            Достижения
+        </div>
+
+
+        <div
+            class="achievement"
+            id="achievement-first"
+        >
+
+            <div class="achievement-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <h4>
+                    Первые шаги
+                </h4>
+
+                <p>
+                    Выполни первый день
+                </p>
+
+            </div>
+
+            <div class="achievement-check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div
+            class="achievement"
+            id="achievement-3"
+        >
+
+            <div class="achievement-icon">
+                🔥
+            </div>
+
+            <div>
+
+                <h4>
+                    Не остановиться
+                </h4>
+
+                <p>
+                    3 дня подряд
+                </p>
+
+            </div>
+
+            <div class="achievement-check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div
+            class="achievement"
+            id="achievement-7"
+        >
+
+            <div class="achievement-icon">
+                🏆
+            </div>
+
+            <div>
+
+                <h4>
+                    Первая неделя
+                </h4>
+
+                <p>
+                    7 дней подряд
+                </p>
+
+            </div>
+
+            <div class="achievement-check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div
+            class="achievement"
+            id="achievement-14"
+        >
+
+            <div class="achievement-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <h4>
+                    Две недели
+                </h4>
+
+                <p>
+                    14 дней подряд
+                </p>
+
+            </div>
+
+            <div class="achievement-check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div
+            class="achievement"
+            id="achievement-30"
+        >
+
+            <div class="achievement-icon">
+                👑
+            </div>
+
+            <div>
+
+                <h4>
+                    Месяц дисциплины
+                </h4>
+
+                <p>
+                    30 дней подряд
+                </p>
+
+            </div>
+
+            <div class="achievement-check">
+                ✓
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RATING
+    ========================== -->
+
+    <div class="card rating-card">
+
+        <div class="rating-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+                <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+            </svg>
+
+        </div>
+
+
+        <h2>
+            Хочешь узнать свою оценку?
+        </h2>
+
+
+        <p>
+            Перейди в Telegram-бот,
+            создай анкету и получи оценку
+            от других людей.
+        </p>
+
+
+        <button
+            class="rating-btn"
+            onclick="openTelegram()"
+        >
+            Получить оценку
+        </button>
+
+    </div>
+
+
+    <div class="free-box">
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M12 3l2.2 4.5L19 9l-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8L5 9l4.8-1.5L12 3z"/>
+        </svg>
+
+
+        <h3>
+            Всё полностью бесплатно
+        </h3>
+
+
+        <p>
+            Никаких подписок, тарифов,
+            промокодов или скрытых платежей.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FACE
+===================================================== -->
+
+<section
+    class="section"
+    id="face"
+>
+
+    <div class="page-header">
+
+        <div class="eyebrow">
+            Раздел 01
+        </div>
+
+        <h1>
+            Упражнения<br>
+            для лица
+        </h1>
+
+        <p>
+            Здесь будут собраны упражнения
+            и советы для работы над лицом.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <circle cx="12" cy="12" r="8"/>
+                    <circle cx="9" cy="10" r="1"/>
+                    <circle cx="15" cy="10" r="1"/>
+                    <path d="M8.5 14c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Упражнения для лица
+            </h3>
+
+        </div>
+
+        <p>
+            Здесь ты сам добавишь свои упражнения,
+            количество повторений, подходы
+            и рекомендации.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M4 12c2-5 5-7 8-7s6 2 8 7c-2 5-5 7-8 7s-6-2-8-7z"/>
+                    <circle cx="12" cy="12" r="2.5"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Работа с взглядом
+            </h3>
+
+        </div>
+
+        <p>
+            Здесь можно разместить отдельные
+            советы и упражнения для области глаз.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M5 9c2-2 4-3 7-3s5 1 7 3"/>
+                    <path d="M6 14c2 1 4 2 6 2s4-1 6-2"/>
+                    <path d="M8 18c1.2.7 2.5 1 4 1s2.8-.3 4-1"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Мимика и контроль
+            </h3>
+
+        </div>
+
+        <p>
+            Добавь сюда собственные рекомендации.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NUTRITION
+===================================================== -->
+
+<section
+    class="section"
+    id="nutrition"
+>
+
+    <div class="page-header">
+
+        <div class="eyebrow">
+            Раздел 02
+        </div>
+
+        <h1>
+            Питание
+        </h1>
+
+        <p>
+            Информация о питании
+            для твоей системы развития.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M7 3v8"/>
+                    <path d="M4 3v5a3 3 0 0 0 6 0V3"/>
+                    <path d="M7 11v10"/>
+                    <path d="M15 3v18"/>
+                    <path d="M15 3c3 1 4 3 4 6v3h-4"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Основы питания
+            </h3>
+
+        </div>
+
+        <p>
+            Здесь ты сам добавишь информацию
+            о рационе и продуктах.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M12 3v18"/>
+                    <path d="M7 7h10"/>
+                    <path d="M6 12h12"/>
+                    <path d="M7 17h10"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Полезные продукты
+            </h3>
+
+        </div>
+
+        <p>
+            Добавь свои списки продуктов,
+            рекомендации и примеры рациона.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <circle cx="12" cy="12" r="8"/>
+                    <path d="M12 8v5l3 2"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Режим питания
+            </h3>
+
+        </div>
+
+        <p>
+            Здесь можно разместить информацию
+            о режиме питания.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRAINING
+===================================================== -->
+
+<section
+    class="section"
+    id="training"
+>
+
+    <div class="page-header">
+
+        <div class="eyebrow">
+            Раздел 03
+        </div>
+
+        <h1>
+            Тренировки
+        </h1>
+
+        <p>
+            Твои программы тренировок
+            и рекомендации по физическому развитию.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M6 8v8"/>
+                    <path d="M3 10v4"/>
+                    <path d="M18 8v8"/>
+                    <path d="M21 10v4"/>
+                    <path d="M6 12h12"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Программа тренировок
+            </h3>
+
+        </div>
+
+        <p>
+            Здесь ты сам добавишь свои тренировки,
+            подходы, повторения и расписание.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <path d="M4 18l6-6 4 4 6-8"/>
+                    <path d="M17 8h3v3"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Прогресс
+            </h3>
+
+        </div>
+
+        <p>
+            Следи за своей регулярностью
+            и не прерывай серию.
+        </p>
+
+    </div>
+
+
+    <div class="content-item">
+
+        <div class="content-item-head">
+
+            <div class="content-item-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+                    <circle cx="12" cy="12" r="8"/>
+                    <path d="M12 8v5l3 2"/>
+                </svg>
+
+            </div>
+
+            <h3>
+                Восстановление
+            </h3>
+
+        </div>
+
+        <p>
+            Добавь сюда свой материал
+            по режиму и восстановлению.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RATING
+===================================================== -->
+
+<section
+    class="section"
+    id="rating"
+>
+
+    <div class="page-header">
+
+        <div class="eyebrow">
+            Социальная оценка
+        </div>
+
+        <h1>
+            Узнай,<br>
+            как тебя видят другие
+        </h1>
+
+        <p>
+            Создай свою анкету в Telegram
+            и получи оценки от других пользователей.
+        </p>
+
+    </div>
+
+
+    <div class="card rating-card">
+
+        <div class="rating-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+                <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+            </svg>
+
+        </div>
+
+
+        <h2>
+            Оценка внешности
+        </h2>
+
+
+        <p>
+            Нажми кнопку ниже.
+            Тебя перенесёт в Telegram-бот,
+            где можно создать анкету
+            и начать получать оценки.
+        </p>
+
+
+        <button
+            class="rating-btn"
+            onclick="openTelegram()"
+        >
+            Перейти в Telegram
+        </button>
+
+    </div>
+
+
+    <div class="free-box">
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M12 3l2.2 4.5L19 9l-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8L5 9l4.8-1.5L12 3z"/>
+        </svg>
+
+        <h3>
+            Никакой оплаты
+        </h3>
+
+        <p>
+            Сайт полностью бесплатный.
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-btn active"
+        data-section="home"
+        onclick="showSection('home')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M3 11l9-8 9 8"/>
+            <path d="M5 10v10h14V10"/>
+        </svg>
+
+        Главная
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        data-section="face"
+        onclick="showSection('face')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="9" cy="10" r="1"/>
+            <circle cx="15" cy="10" r="1"/>
+            <path d="M8.5 14c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/>
+        </svg>
+
+        Лицо
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        data-section="nutrition"
+        onclick="showSection('nutrition')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M7 3v8"/>
+            <path d="M4 3v5a3 3 0 0 0 6 0V3"/>
+            <path d="M7 11v10"/>
+            <path d="M15 3v18"/>
+            <path d="M15 3c3 1 4 3 4 6v3h-4"/>
+        </svg>
+
+        Питание
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        data-section="training"
+        onclick="showSection('training')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M6 8v8"/>
+            <path d="M3 10v4"/>
+            <path d="M18 8v8"/>
+            <path d="M21 10v4"/>
+            <path d="M6 12h12"/>
+        </svg>
+
+        Тренировки
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        data-section="rating"
+        onclick="showSection('rating')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M12 3l2.5 5 5.5.8-4 3.9.9-5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+        </svg>
+
+        Оценка
+
+    </button>
+
+</nav>
+
+</div>
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeMenu()"
+></div>
+
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+>
+
+
+    <div class="side-top">
+
+        <div class="side-title">
+            ASCEND
+        </div>
+
+
+        <button
+            class="close-menu"
+            onclick="closeMenu()"
+        >
+
+            <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M6 6l12 12"/>
+                <path d="M18 6L6 18"/>
+            </svg>
+
+        </button>
+
+    </div>
+
+
+    <div class="menu-section-title">
+        Основное
+    </div>
+
+
+    <button
+        class="side-item"
+        onclick="goMenu('home')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M3 11l9-8 9 8"/>
+            <path d="M5 10v10h14V10"/>
+        </svg>
+
+        Главная
+
+    </button>
+
+
+    <button
+        class="side-item"
+        onclick="goMenu('face')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="9" cy="10" r="1"/>
+            <circle cx="15" cy="10" r="1"/>
+            <path d="M8.5 14c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/>
+        </svg>
+
+        Упражнения для лица
+
+    </button>
+
+
+    <button
+        class="side-item"
+        onclick="goMenu('nutrition')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M7 3v8"/>
+            <path d="M4 3v5a3 3 0 0 0 6 0V3"/>
+            <path d="M7 11v10"/>
+            <path d="M15 3v18"/>
+            <path d="M15 3c3 1 4 3 4 6v3h-4"/>
+        </svg>
+
+        Питание
+
+    </button>
+
+
+    <button
+        class="side-item"
+        onclick="goMenu('training')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M6 8v8"/>
+            <path d="M3 10v4"/>
+            <path d="M18 8v8"/>
+            <path d="M21 10v4"/>
+            <path d="M6 12h12"/>
+        </svg>
+
+        Тренировки
+
+    </button>
+
+
+    <div class="menu-section-title">
+        Социальное
+    </div>
+
+
+    <button
+        class="side-item"
+        onclick="goMenu('rating')"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M12 3l2.5 5 5.5.8-4 3.9.9-5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/>
+        </svg>
+
+        Получить оценку
+
+    </button>
+
+
+    <div class="menu-section-title">
+        Проект
+    </div>
+
+
+    <button
+        class="side-item"
+        onclick="openTelegram()"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+        >
+            <path d="M21 4L3 11l7 2 2 7 9-16z"/>
+            <path d="M10 13l4-4"/>
+        </svg>
+
+        Telegram-бот
+
+    </button>
+
+</aside>
+
+
+<script>
+
+/* =====================================================
+   TELEGRAM
+===================================================== */
+
+const TELEGRAM_BOT =
+    "https://t.me/MoggVinchikRobot";
+
+
+function openTelegram(){
+
+    window.open(
+        TELEGRAM_BOT,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showSection(sectionName){
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(sectionName);
+
+
+    if(target){
+
+        target.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+
+            if(
+                btn.dataset.section ===
+                sectionName
+            ){
+
+                btn.classList.add("active");
+
+            }
+
+        });
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function goMenu(sectionName){
+
+    closeMenu();
+
+    showSection(sectionName);
+
+}
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+function openMenu(){
+
+    document
+        .getElementById("sideMenu")
+        .classList.add("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.add("open");
+
+}
+
+
+function closeMenu(){
+
+    document
+        .getElementById("sideMenu")
+        .classList.remove("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const COMPLETED_KEY =
+    "ascend_completed_days_v2";
+
+const BEST_KEY =
+    "ascend_best_streak_v2";
+
+
+function getCompletedDays(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                COMPLETED_KEY
+            )
+        ) || [];
+
+    }catch{
+
+        return [];
+
+    }
+
+}
+
+
+function saveCompletedDays(days){
+
+    localStorage.setItem(
+        COMPLETED_KEY,
+        JSON.stringify(days)
+    );
+
+}
+
+
+function getToday(){
+
+    const now =
+        new Date();
+
+    return dateToKey(now);
+
+}
+
+
+function dateToKey(date){
+
+    return (
+        date.getFullYear() +
+        "-" +
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0") +
+        "-" +
+        String(
+            date.getDate()
+        ).padStart(2,"0")
+    );
+
+}
+
+
+/* =====================================================
+   STREAK
+===================================================== */
+
+function calculateStreak(){
+
+    const completed =
+        getCompletedDays();
+
+
+    if(!completed.length){
+
+        return 0;
+
+    }
+
+
+    const today =
+        new Date();
+
+
+    const todayKey =
+        dateToKey(today);
+
+
+    const yesterday =
+        new Date(today);
+
+
+    yesterday.setDate(
+        yesterday.getDate()-1
+    );
+
+
+    const yesterdayKey =
+        dateToKey(yesterday);
+
+
+    const hasToday =
+        completed.includes(todayKey);
+
+
+    const hasYesterday =
+        completed.includes(yesterdayKey);
+
+
+    /*
+       Если пользователь не выполнил
+       ни сегодня, ни вчера —
+       текущая серия закончена.
+    */
+
+    if(
+        !hasToday &&
+        !hasYesterday
+    ){
+
+        return 0;
+
+    }
+
+
+    let streak = 0;
+
+
+    let checkDate =
+        new Date(today);
+
+
+    /*
+       Если сегодня ещё не выполнено,
+       считаем серию от вчера.
+    */
+
+    if(!hasToday){
+
+        checkDate.setDate(
+            checkDate.getDate()-1
+        );
+
+    }
+
+
+    while(true){
+
+        const key =
+            dateToKey(checkDate);
+
+
+        if(
+            completed.includes(key)
+        ){
+
+            streak++;
+
+
+            checkDate.setDate(
+                checkDate.getDate()-1
+            );
+
+        }else{
+
+            break;
+
+        }
+
+
+        if(streak > 10000){
+
+            break;
+
+        }
+
+    }
+
+
+    return streak;
+
+}
+
+
+/* =====================================================
+   BEST STREAK
+===================================================== */
+
+function calculateBestStreak(){
+
+    const completed =
+        getCompletedDays();
+
+
+    if(!completed.length){
+
+        return 0;
+
+    }
+
+
+    const sorted =
+        [...completed].sort();
+
+
+    let best = 1;
+    let current = 1;
+
+
+    for(
+        let i=1;
+        i<sorted.length;
+        i++
+    ){
+
+        const previous =
+            new Date(
+                sorted[i-1]
+            );
+
+
+        const currentDate =
+            new Date(
+                sorted[i]
+            );
+
+
+        const difference =
+            Math.round(
+                (
+                    currentDate -
+                    previous
+                ) /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
+            );
+
+
+        if(difference === 1){
+
+            current++;
+
+            if(current > best){
+
+                best = current;
+
+            }
+
+        }else{
+
+            current = 1;
+
+        }
+
+    }
+
+
+    return best;
+
+}
+
+
+/* =====================================================
+   COMPLETE DAY
+===================================================== */
+
+function completeDay(){
+
+    const today =
+        getToday();
+
+
+    let completed =
+        getCompletedDays();
+
+
+    if(
+        completed.includes(today)
+    ){
+
+        showToast(
+            "Сегодня уже выполнено ✓"
+        );
+
+        return;
+
+    }
+
+
+    completed.push(today);
+
+
+    saveCompletedDays(
+        completed
+    );
+
+
+    const streak =
+        calculateStreak();
+
+
+    const best =
+        calculateBestStreak();
+
+
+    localStorage.setItem(
+        BEST_KEY,
+        String(best)
+    );
+
+
+    renderAll();
+
+
+    createConfetti();
+
+
+    if(
+        navigator.vibrate
+    ){
+
+        navigator.vibrate(
+            [30,40,30]
+        );
+
+    }
+
+
+    showToast(
+        "День выполнен! Серия: " +
+        streak +
+        " 🔥"
+    );
+
+}
+
+
+/* =====================================================
+   WEEK
+===================================================== */
+
+function renderWeek(){
+
+    const container =
+        document.getElementById(
+            "week"
+        );
+
+
+    if(!container){
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    const completed =
+        getCompletedDays();
+
+
+    const today =
+        new Date();
+
+
+    const names = [
+        "Вс",
+        "Пн",
+        "Вт",
+        "Ср",
+        "Чт",
+        "Пт",
+        "Сб"
+    ];
+
+
+    for(
+        let i=6;
+        i>=0;
+        i--
+    ){
+
+        const date =
+            new Date(today);
+
+
+        date.setDate(
+            today.getDate()-i
+        );
+
+
+        const key =
+            dateToKey(date);
+
+
+        const day =
+            document.createElement(
+                "div"
+            );
+
+
+        const isCompleted =
+            completed.includes(key);
+
+
+        const isToday =
+            key ===
+            dateToKey(today);
+
+
+        day.className =
+            "day" +
+            (
+                isCompleted
+                    ? " completed"
+                    : ""
+            ) +
+            (
+                isToday
+                    ? " today"
+                    : ""
+            );
+
+
+        day.innerHTML = `
+
+            <div class="day-name">
+                ${names[date.getDay()]}
+            </div>
+
+            <div class="day-circle">
+                ${
+                    isCompleted
+                        ? "✓"
+                        : date.getDate()
+                }
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            day
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LEVEL SYSTEM
+===================================================== */
+
+function getLevel(streak){
+
+    if(streak >= 30){
+
+        return 5;
+
+    }
+
+    if(streak >= 14){
+
+        return 4;
+
+    }
+
+    if(streak >= 7){
+
+        return 3;
+
+    }
+
+    if(streak >= 3){
+
+        return 2;
+
+    }
+
+    return 1;
+
+}
+
+
+function renderLevel(){
+
+    const streak =
+        calculateStreak();
+
+
+    const level =
+        getLevel(streak);
+
+
+    const badge =
+        document.getElementById(
+            "levelBadge"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "levelProgress"
+        );
+
+
+    const current =
+        document.getElementById(
+            "levelCurrent"
+        );
+
+
+    const next =
+        document.getElementById(
+            "levelNext"
+        );
+
+
+    let min = 0;
+    let max = 3;
+
+
+    if(level === 1){
+
+        min = 0;
+        max = 3;
+
+    }
+
+
+    if(level === 2){
+
+        min = 3;
+        max = 7;
+
+    }
+
+
+    if(level === 3){
+
+        min = 7;
+        max = 14;
+
+    }
+
+
+    if(level === 4){
+
+        min = 14;
+        max = 30;
+
+    }
+
+
+    if(level === 5){
+
+        min = 30;
+        max = 30;
+
+    }
+
+
+    if(badge){
+
+        badge.textContent =
+            "УРОВЕНЬ " + level;
+
+    }
+
+
+    if(level === 5){
+
+        progress.style.width =
+            "100%";
+
+        current.textContent =
+            "30+ дней";
+
+        next.textContent =
+            "Максимальный уровень";
+
+        return;
+
+    }
+
+
+    const percent =
+        Math.min(
+            100,
+            Math.max(
+                0,
+                (
+                    (
+                        streak-min
+                    ) /
+                    (
+                        max-min
+                    )
+                ) * 100
+            )
+        );
+
+
+    progress.style.width =
+        percent + "%";
+
+
+    current.textContent =
+        streak +
+        " / " +
+        max +
+        " дней";
+
+
+    next.textContent =
+        "До уровня " +
+        (level+1);
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function renderStats(){
+
+    const completed =
+        getCompletedDays();
+
+
+    const streak =
+        calculateStreak();
+
+
+    const best =
+        calculateBestStreak();
+
+
+    const total =
+        document.getElementById(
+            "totalDays"
+        );
+
+
+    const bestElement =
+        document.getElementById(
+            "bestStreak"
+        );
+
+
+    if(total){
+
+        total.textContent =
+            completed.length;
+
+    }
+
+
+    if(bestElement){
+
+        bestElement.textContent =
+            best;
+
+    }
+
+
+    renderAchievements();
+
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+function unlock(id){
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if(element){
+
+        element.classList.add(
+            "unlocked"
+        );
+
+    }
+
+}
+
+
+function renderAchievements(){
+
+    const streak =
+        calculateStreak();
+
+
+    const completed =
+        getCompletedDays();
+
+
+    if(
+        completed.length >= 1
+    ){
+
+        unlock(
+            "achievement-first"
+        );
+
+    }
+
+
+    if(streak >= 3){
+
+        unlock(
+            "achievement-3"
+        );
+
+    }
+
+
+    if(streak >= 7){
+
+        unlock(
+            "achievement-7"
+        );
+
+    }
+
+
+    if(streak >= 14){
+
+        unlock(
+            "achievement-14"
+        );
+
+    }
+
+
+    if(streak >= 30){
+
+        unlock(
+            "achievement-30"
+        );
+
+    }
+
+
+    let count = 0;
+
+
+    document
+        .querySelectorAll(
+            ".achievement.unlocked"
+        )
+        .forEach(() => {
+
+            count++;
+
+        });
+
+
+    const counter =
+        document.getElementById(
+            "achievementCount"
+        );
+
+
+    if(counter){
+
+        counter.textContent =
+            count;
+
+    }
+
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+function renderCalendar(){
+
+    const calendar =
+        document.getElementById(
+            "calendar"
+        );
+
+
+    if(!calendar){
+
+        return;
+
+    }
+
+
+    calendar.innerHTML = "";
+
+
+    const completed =
+        getCompletedDays();
+
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        now.getMonth();
+
+
+    const weekdays = [
+        "П",
+        "В",
+        "С",
+        "Ч",
+        "П",
+        "С",
+        "В"
+    ];
+
+
+    weekdays.forEach(day => {
+
+        const element =
+            document.createElement(
+                "div"
+            );
+
+
+        element.className =
+            "calendar-weekday";
+
+
+        element.textContent =
+            day;
+
+
+        calendar.appendChild(
+            element
+        );
+
+    });
+
+
+    const first =
+        new Date(
+            year,
+            month,
+            1
+        );
+
+
+    /*
+       JS: воскресенье = 0.
+       Переводим в Пн = 0.
+    */
+
+    let offset =
+        first.getDay() - 1;
+
+
+    if(offset < 0){
+
+        offset = 6;
+
+    }
+
+
+    for(
+        let i=0;
+        i<offset;
+        i++
+    ){
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "calendar-day empty";
+
+
+        calendar.appendChild(
+            empty
+        );
+
+    }
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month+1,
+            0
+        ).getDate();
+
+
+    for(
+        let day=1;
+        day<=daysInMonth;
+        day++
+    ){
+
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+
+        const key =
+            dateToKey(date);
+
+
+        const element =
+            document.createElement(
+                "div"
+            );
+
+
+        element.className =
+            "calendar-day";
+
+
+        if(
+            completed.includes(key)
+        ){
+
+            element.classList.add(
+                "completed"
+            );
+
+        }
+
+
+        if(
+            key === getToday()
+        ){
+
+            element.classList.add(
+                "today"
+            );
+
+        }
+
+
+        element.textContent =
+            day;
+
+
+        calendar.appendChild(
+            element
+        );
+
+    }
+
+
+    const count =
+        document.getElementById(
+            "calendarCount"
+        );
+
+
+    const currentMonthCount =
+        completed.filter(
+            dateString => {
+
+                return (
+                    dateString
+                    .startsWith(
+                        year +
+                        "-" +
+                        String(
+                            month+1
+                        ).padStart(
+                            2,
+                            "0"
+                        )
+                    )
+                );
+
+            }
+        ).length;
+
+
+    if(count){
+
+        count.textContent =
+            currentMonthCount +
+            " дней";
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER EVERYTHING
+===================================================== */
+
+function renderAll(){
+
+    const streak =
+        calculateStreak();
+
+
+    const number =
+        document.getElementById(
+            "streakNumber"
+        );
+
+
+    const status =
+        document.getElementById(
+            "streakStatus"
+        );
+
+
+    const button =
+        document.getElementById(
+            "completeBtn"
+        );
+
+
+    const completed =
+        getCompletedDays();
+
+
+    const today =
+        getToday();
+
+
+    if(number){
+
+        number.textContent =
+            streak;
+
+    }
+
+
+    if(
+        completed.includes(today)
+    ){
+
+        button.textContent =
+            "Сегодня уже выполнено ✓";
+
+        button.classList.add(
+            "done"
+        );
+
+
+        status.textContent =
+            streak > 1
+                ? "Продолжай в том же духе"
+                : "Отличное начало";
+
+    }else{
+
+        button.textContent =
+            "Я выполнил всё за сегодня";
+
+        button.classList.remove(
+            "done"
+        );
+
+
+        if(streak === 0){
+
+            status.textContent =
+                "Начни сегодня";
+
+        }else{
+
+            status.textContent =
+                "Не потеряй свою серию";
+
+        }
+
+    }
+
+
+    renderWeek();
+
+    renderLevel();
+
+    renderStats();
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+    const old =
+        document.querySelector(
+            ".toast"
+        );
+
+
+    if(old){
+
+        old.remove();
+
+    }
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        "toast";
+
+
+    toast.textContent =
+        message;
+
+
+    document.body.appendChild(
+        toast
+    );
+
+
+    setTimeout(() => {
+
+        toast.classList.add(
+            "show"
+        );
+
+    },10);
+
+
+    setTimeout(() => {
+
+        toast.classList.remove(
+            "show"
+        );
+
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        },250);
+
+    },2500);
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+
+    const symbols = [
+        "✦",
+        "•",
+        "✧"
+    ];
+
+
+    for(
+        let i=0;
+        i<24;
+        i++
+    ){
+
+        const piece =
+            document.createElement(
+                "div"
+            );
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        piece.style.left =
+            (
+                50 +
+                (
+                    Math.random()-.5
+                ) * 20
+            ) + "%";
+
+
+        piece.style.color =
+            Math.random() > .5
+                ? "#f7d45b"
+                : "#ffffff";
+
+
+        piece.style.setProperty(
+            "--x",
+            (
+                (
+                    Math.random()-.5
+                ) * 360
+            ) + "px"
+        );
+
+
+        piece.style.setProperty(
+            "--y",
+            (
+                150 +
+                Math.random()*300
+            ) + "px"
+        );
+
+
+        piece.style.setProperty(
+            "--r",
+            (
+                Math.random()*720
+            ) + "deg"
+        );
+
+
+        document.body.appendChild(
+            piece
+        );
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        },950);
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderAll();
+
+    }
+);
+
+
+/* =====================================================
+   MIDNIGHT REFRESH
+===================================================== */
+
+setInterval(
+    () => {
+
+        renderAll();
+
+    },
+    60 * 1000
+);
+
+</script>
+
+</body>
+</html>
